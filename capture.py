@@ -12,7 +12,7 @@ def app():
 
     with open("anima1.json") as source:
         animation = json.load(source)
-    st_lottie(animation, width = 500)
+    st_lottie(animation, width = 400)
     
     photo = st.camera_input("Upload an image containing grains to count them.")
 
