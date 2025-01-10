@@ -167,15 +167,15 @@ def app():
         font = cv2.FONT_HERSHEY_SIMPLEX
         cv2.putText(image_copy, f"Total Count: {total_grains}", (20, 50), font, 1, (255, 0, 0), 2)
         _, img_encoded = cv2.imencode('.png', image_copy)
-        st.image(img_encoded.tobytes(), caption="Processed Image with Total Count", use_column_width=True)
+        st.image(img_encoded.tobytes(), caption="Processed Image with Total Count")
 
         # st.subheader("Thresholded Image")
         # _, thresh_encoded = cv2.imencode('.png', thresh_image)
-        # st.image(thresh_encoded.tobytes(), use_column_width=True)
+        # st.image(thresh_encoded.tobytes())
 
         # st.subheader("Morphed Image")
         # _, morphed_encoded = cv2.imencode('.png', morphed_image)
-        # st.image(morphed_encoded.tobytes(), use_column_width=True)
+        # st.image(morphed_encoded.tobytes())
 
         st.write(f"## Total number of grains detected: {total_grains}")
 
