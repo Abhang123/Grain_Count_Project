@@ -141,20 +141,20 @@ def app():
         blurred_image = cv2.GaussianBlur(gray_image, (5, 5), 0)
 
         # Threshold Parameters
-        block_size = st.sidebar.slider("Adaptive Threshold Block Size", 3, 21, 11, 2)
-        c_value = st.sidebar.slider("Adaptive Threshold Constant", -10, 10, 2, 1)
+        block_size = 3
+        c_value = 2
         thresh_image = cv2.adaptiveThreshold(
             blurred_image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, block_size, c_value
         )
 
         # Morphological Parameters
-        kernel_size = st.sidebar.slider("Kernel Size for Morphology", 1, 15, 5, 2)
+        kernel_size = 5
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (kernel_size, kernel_size))
         morphed_image = cv2.morphologyEx(thresh_image, cv2.MORPH_CLOSE, kernel)
 
         # Contour Filtering
         contours, _ = cv2.findContours(morphed_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        min_area = st.sidebar.slider("Minimum Area Threshold", 10, 300, 50, 10)
+        min_area = 70
         filtered_contours = [cnt for cnt in contours if cv2.contourArea(cnt) > min_area]
 
         # Count and Draw Contours
