@@ -214,4 +214,15 @@ def app():
 
         st.write(f"## Total number of grains detected: {total_grains}")
 
+        # Visualize masks (optional)
+        # Visualize masks (optional)
+        st.subheader("Brown Mask")
+        st.image(brown_mask, use_column_width=True)
+        st.subheader("Dark Brown Mask")
+        st.image(dark_brown_mask, use_column_width=True)
+
+        st.subheader("Black Mask")
+        st.image(black_mask, use_column_width=True)
+
+
 app()
