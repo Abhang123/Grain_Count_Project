@@ -50,7 +50,7 @@ def app():
         # black_mask = cv2.inRange(hsv_image, black_lower, upper_black)
         yellow_mask = cv2.inRange(hsv_image, yellow_lower,yellow_upper)
         mask = cv2.bitwise_or(brown_mask, dark_brown_mask)
-        mask = cv2.bitwise_or(mask, yellow_mask)
+        # mask = cv2.bitwise_or(mask, yellow_mask)
 
         # Apply the mask to the original image
         filtered_image = cv2.bitwise_and(image_resized, image_resized, mask=mask)
@@ -59,7 +59,7 @@ def app():
         gray_image = cv2.cvtColor(filtered_image, cv2.COLOR_BGR2GRAY)
 
         # **3. Adaptive Thresholding**
-        block_size = 11  # Adjust as needed
+        block_size = 3  # Adjust as needed
         c_value = 2 
         thresh_image = cv2.adaptiveThreshold(
             gray_image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, block_size, c_value
@@ -71,7 +71,7 @@ def app():
 
         # **4. Contour Filtering**
         contours, _ = cv2.findContours(morphed_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        min_area = 100  # Adjust as needed
+        min_area = 30  # Adjust as needed
         filtered_contours = [cnt for cnt in contours if cv2.contourArea(cnt) > min_area]
 
         # Count and Draw Contours
@@ -103,5 +103,7 @@ def app():
         st.image(brown_mask)
         st.subheader("Dark Brown Mask")
         st.image(dark_brown_mask)
+        st.subheader("Yellow Mask")
+        st.image(yellow_mask)
         
 app()
