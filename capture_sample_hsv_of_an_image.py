@@ -148,7 +148,7 @@ def app():
         )
 
         # Morphological Parameters
-        kernel_size = 5
+        kernel_size = 4
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (kernel_size, kernel_size))
         morphed_image = cv2.morphologyEx(thresh_image, cv2.MORPH_CLOSE, kernel)
 
