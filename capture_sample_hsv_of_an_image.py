@@ -142,13 +142,13 @@ def app():
 
         # Threshold Parameters
         block_size = 3
-        c_value = 1
+        c_value = 2
         thresh_image = cv2.adaptiveThreshold(
             blurred_image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, block_size, c_value
         )
 
         # Morphological Parameters
-        kernel_size = 4
+        kernel_size = 3
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (kernel_size, kernel_size))
         morphed_image = cv2.morphologyEx(thresh_image, cv2.MORPH_CLOSE, kernel)
 
