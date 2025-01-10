@@ -154,7 +154,7 @@ def app():
 
         # Contour Filtering
         contours, _ = cv2.findContours(morphed_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        min_area = 70
+        min_area = 60
         filtered_contours = [cnt for cnt in contours if cv2.contourArea(cnt) > min_area]
 
         # Count and Draw Contours
