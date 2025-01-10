@@ -217,12 +217,11 @@ def app():
         # Visualize masks (optional)
         # Visualize masks (optional)
         st.subheader("Brown Mask")
-        st.image(brown_mask, use_column_width=True)
+        st.image(brown_mask)
         st.subheader("Dark Brown Mask")
-        st.image(dark_brown_mask, use_column_width=True)
+        st.image(dark_brown_mask)
 
-        st.subheader("Black Mask")
-        st.image(black_mask, use_column_width=True)
+
 
 
 app()
