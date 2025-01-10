@@ -17,8 +17,8 @@ def app():
     # Create a container with custom size
     with st.container():
         st.markdown("<style>div.stButton > button {width: 100%; height: 100% !important;}</style>", unsafe_allow_html=True)
-        st.write("You can upload or capture live photo below - ")
-        photo = st.file_uploader("Upload an image containing grains to count them.")
+        st.write("### You can upload or capture live photo below - ")
+        photo = st.file_uploader("Upload an image or capture it using your camera.")
 
     if photo is not None:
         file_bytes = np.asarray(bytearray(photo.read()), dtype=np.uint8)
@@ -41,12 +41,16 @@ def app():
         # black_lower = np.array([0, 0, 0])
         # black_upper = np.array([180, 255, 50])
 
+        yellow_lower = np.array([25,100,255])
+        yellow_upper = np.array([35,255,255])
+
         # Create masks for grain colors
         brown_mask = cv2.inRange(hsv_image, brown_lower, brown_upper)
         dark_brown_mask = cv2.inRange(hsv_image, dark_brown_lower, dark_brown_upper)
         # black_mask = cv2.inRange(hsv_image, black_lower, upper_black)
+        yellow_mask = cv2.inRange(hsv_image, yellow_lower,yellow_upper)
         mask = cv2.bitwise_or(brown_mask, dark_brown_mask)
-        # mask = cv2.bitwise_or(mask, black_mask)
+        mask = cv2.bitwise_or(mask, yellow_mask)
 
         # Apply the mask to the original image
         filtered_image = cv2.bitwise_and(image_resized, image_resized, mask=mask)
@@ -99,8 +103,5 @@ def app():
         st.image(brown_mask)
         st.subheader("Dark Brown Mask")
         st.image(dark_brown_mask)
-
-
-
-
+        
 app()
