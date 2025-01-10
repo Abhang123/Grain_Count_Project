@@ -179,4 +179,4 @@ def app():
 
         st.write(f"## Total number of grains detected: {total_grains}")
 
-
+app()
