@@ -138,8 +138,8 @@ def app():
         st.markdown("<style>div.stButton > button {width: 100%; height: 100% !important;}</style>", unsafe_allow_html=True)
         photo = st.file_uploader("Upload an image containing grains to count them.")
 
-        if photo is not None:
-            st.image(photo)
+        # if photo is not None:
+        #     st.image(photo)
 
     if photo is not None:
         file_bytes = np.asarray(bytearray(photo.read()), dtype=np.uint8)
