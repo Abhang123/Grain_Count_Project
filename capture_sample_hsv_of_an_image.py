@@ -141,8 +141,8 @@ def app():
         blurred_image = cv2.GaussianBlur(gray_image, (5, 5), 0)
 
         # Threshold Parameters
-        block_size = 2
-        c_value = 2
+        block_size = 3
+        c_value = 1
         thresh_image = cv2.adaptiveThreshold(
             blurred_image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, block_size, c_value
         )
