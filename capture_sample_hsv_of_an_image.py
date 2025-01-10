@@ -136,7 +136,7 @@ def app():
     # Create a container with custom size
     with st.container():
         st.markdown("<style>div.stButton > button {width: 100%; height: 100% !important;}</style>", unsafe_allow_html=True)
-        photo = st.camera_input("Upload an image containing grains to count them.")
+        photo = st.file_uploader("Upload an image containing grains to count them.")
 
         if photo is not None:
             st.image(photo)
