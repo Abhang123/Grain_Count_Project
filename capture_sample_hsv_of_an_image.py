@@ -68,10 +68,10 @@ def app():
         # Morphological Operations
         kernel = np.ones((5, 5), np.uint8) 
         morphed_image = cv2.morphologyEx(thresh_image, cv2.MORPH_CLOSE, kernel) 
-
+        
         # **4. Contour Filtering**
         contours, _ = cv2.findContours(morphed_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        min_area = 30  # Adjust as needed
+        min_area = 50  # Adjust as needed
         filtered_contours = [cnt for cnt in contours if cv2.contourArea(cnt) > min_area]
 
         # Count and Draw Contours
